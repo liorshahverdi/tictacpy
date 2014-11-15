@@ -32,6 +32,12 @@ class Grid:
 		print self.tdList[1]
 		print self.tdList[2]
 
+	def isNotAValidTile(self, tile):
+		if tile <= 0 or tile >= 10:
+			return True
+		else:
+			return False
+
 	def isAlreadyOccupied(self, locn):
 		if locn == 1:
 			return self.tdList[0][0] > 0
@@ -95,6 +101,8 @@ def startGame():
 		print "\n", player,"'s turn"
 		string_io = raw_input("select a tile (1-9) ")
 
+		while g.isNotAValidTile(int(string_io)):
+			string_io = raw_input("The tile you selected is not valid.\nselect a tile (1-9) ")
 		while g.isAlreadyOccupied(int(string_io)):
 			string_io = raw_input("The tile you selected has already been occupied.\nselect a tile (1-9) ")
 
@@ -110,6 +118,12 @@ def startGame():
 		if lcv == 10:
 			gameOver = True 
 
-res = raw_input("Ready? (y/n) ")
-if res == 'y':
-	startGame()
+keepPlay = True
+
+while keepPlay:
+	res = raw_input("Ready? (y/n) ")
+	if res == 'y':
+		startGame()
+		continue_play_response = raw_input("Play again? (y/n) ")
+		if continue_play_response != 'y':
+			keepPlay = False

@@ -4,4 +4,4 @@ def my_factorial(number):
 	else:
 		return my_factorial(number-1) * number
 
-print 'factorial of 3 is', my_factorial(3)
+print 'factorial of 3 is ', my_factorial(3)
