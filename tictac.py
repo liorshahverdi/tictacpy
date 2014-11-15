@@ -3,9 +3,9 @@ print 'Here it goes!'
 twod_list = []
 new = []
 for i in range (0,3):
-		for j in range(0,3):
-			new.append(0)
-		twod_list.append(new)
-		new = []
+	for j in range(0,3):
+		new.append(0)
+	twod_list.append(new)
+	new = []
 
 print twod_list
