@@ -1,15 +1,7 @@
-class mine:
-	def __init__(self, name=None):
-		self.name = "John Coogamelloncamp"
+def my_factorial(number):
+	if number == 0 or number == 1:
+		return 1
+	else:
+		return my_factorial(number-1) * number
 
-	def getName(self):
-		return self.name
-
-	def setName(self, name):
-		self.name = name
-
-
-m = mine()
-string = "Steven Tyler"
-m.setName(string)
-print m.getName()
+print 'factorial of 3 is', my_factorial(3)

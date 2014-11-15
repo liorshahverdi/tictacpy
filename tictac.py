@@ -54,9 +54,31 @@ class Grid:
 		elif locn == 0:
 			return False
 
+	def ifPlayerJustWon(self, p):
+		if self.tdList[0][0] == p and self.tdList[0][1] == p and self.tdList[0][2] == p:
+			return True
+		elif self.tdList[1][0] == p and self.tdList[1][1] == p and self.tdList[1][2] == p:
+			return True
+		elif self.tdList[2][0] == p and self.tdList[2][1] == p and self.tdList[2][2] == p:
+			return True
+		
+		elif self.tdList[0][0] == p and self.tdList[1][0] == p and self.tdList[2][0] == p:
+			return True
+		elif self.tdList[0][1] == p and self.tdList[1][1] == p and self.tdList[2][1] == p:
+			return True
+		elif self.tdList[0][2] == p and self.tdList[1][2] == p and self.tdList[2][2] == p:
+			return True
+
+		elif self.tdList[0][0] == p and self.tdList[1][1] == p and self.tdList[2][2] == p:
+			return True
+		elif self.tdList[2][0] == p and self.tdList[1][1] == p and self.tdList[0][2] == p:
+			return True
+	
+		return False
 
 def startGame():
 	g = Grid()
+	g.dispList()
 	lcv = 1
 	pnum = 0
 	gameOver = False
@@ -77,9 +99,13 @@ def startGame():
 			string_io = raw_input("The tile you selected has already been occupied.\nselect a tile (1-9) ")
 
 		g.setTile(int(string_io),pnum)
-		
-
 		g.dispList()
+		if g.ifPlayerJustWon(pnum):
+			if pnum ==1:
+				print "Player 1 has won!"
+			else:
+				print "Player 2 has won!"
+			gameOver = True
 		lcv += 1
 		if lcv == 10:
 			gameOver = True 
